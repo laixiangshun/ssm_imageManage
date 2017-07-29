@@ -77,42 +77,41 @@
             <h3 class="heading">分类</h3>
             <ul>
                 <li><a href="https://elricyo.github.io">博客</a></li>
-                <li><a href="login">上传图片</a></li>
+                <li><a href="${path }/uploadPicture.html">上传图片</a></li>
             </ul>
         </div>
     </div>
 </div>
 <!-- END #fh5co-offcanvas -->
 <header id="fh5co-header">
-
     <div class="container-fluid">
-
         <div class="row">
             <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
             <div class="col-lg-12 col-md-12 text-center">
                 <h1 id="fh5co-logo">图片墙</h1>
             </div>
         </div>
-
     </div>
-
 </header>
 <!-- END #fh5co-header -->
 <div class="container-fluid">
     <div class="row fh5co-post-entry">
         <c:forEach items="${pictures}" var="picture">
-        <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
-            <figure>
-                <img src="${picture.picName}" alt="Image" class="img-responsive">
-            </figure>
-            <h2 class="fh5co-article-title"><a href="single.jsp">${picture.content}</a></h2>
-        </article>
+        <div>
+	        <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+	            <figure>
+	                <img src="${picture.picName}" alt="Image" class="img-responsive">
+	            </figure>
+	            <h2 class="fh5co-article-title"><a href="single.jsp">${picture.content}</a></h2>
+	        </article>
+        </div>
         </c:forEach>
     </div>
 </div>
 <footer id="fh5co-footer">
     <p>
-        <small>Power By Koali </small>
+        <small>@CopyRight Power By lailai </small>
+        <s
     </p>
 </footer>
 
@@ -127,7 +126,6 @@
 <script src="${path }/js/jquery.waypoints.min.js"></script>
 <!-- Main JS -->
 <script src="${path }/js/main.js"></script>
-
 </body>
 </html>
 

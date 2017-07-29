@@ -27,5 +27,12 @@
     <mvc:resources location="/WEB-INF/pages/fonts/" mapping="/fonts/**" />
     <mvc:resources location="/WEB-INF/pages/images/" mapping="/images/**" />
     <mvc:resources location="/WEB-INF/pages/js/" mapping="/js/**"/>
+     <!-- 自定义拦截器 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/*"/>
+    		<bean class="com.java.interceptor.Interceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
 </beans>
 
