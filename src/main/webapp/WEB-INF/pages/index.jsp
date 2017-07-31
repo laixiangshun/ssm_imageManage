@@ -274,8 +274,10 @@
 				if(data.success==true){
 					window.location.href="${path}/login.html";
 				}else{
+					if(data.href){
+						window.location.href=data.href;
+					}
 					alert(data.message);
-					window.location.reload(true);
 				}
 			},
 			error: function(responseText,textStatus,errorThrown){

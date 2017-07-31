@@ -119,17 +119,32 @@ public class UserController {
 		response.setContentType("text/json;charset=utf-8");
 		try {
 			HttpSession session=request.getSession();
-			session.invalidate();
-			view.setSuccess(true);
-			/*User user=(User)session.getAttribute("user");
-			if(user!=null){
-				view.setSuccess(false);
-				view.setMessage("退出失败");
+			User user=(User)session.getAttribute("user");
+			String token=(String)session.getAttribute("token");
+			//判断session是否过期的方法：
+			/*if(request.getSession(false)==null){
+				if(request.getSession(true).isNew()==false){
+					session.invalidate();
+					view.setSuccess(true);
+				}
+				
 			}*/
+			if(token!=null){//session过期
+				//response.sendRedirect(request.getContextPath()+"/login.html");
+				view.setHref(request.getContextPath()+"/login.html");
+				view.setMessage("session过期,重新登录");
+				view.setSuccess(false);
+			}else{
+				if(user!=null){
+					session.invalidate();
+					view.setSuccess(true);
+				}else{
+					view.setSuccess(false);
+					view.setMessage("退出失败");
+				}
+			}
 		} catch (Exception e) {
 			logger.error("退出出错:"+e.getMessage(), e);
-			view.setSuccess(false);
-			view.setMessage("退出失败");
 		}
 		String json=JSON.toJSONString(view);
 		response.getWriter().write(json);
