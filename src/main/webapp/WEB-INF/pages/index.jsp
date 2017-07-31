@@ -176,7 +176,7 @@
         <h3>rainbow</h3>
         <p>我的梦想是全栈开发，我的口号是做自己.</p>
         <ul class="fh5co-social">
-            <li><a href="http://weibo.com/u/2972144032"><i class="icon-sina-weibo"></i></a></li>
+            <li><a href="http://weibo.com/u/5672460634"><i class="icon-sina-weibo"></i></a></li>
             <li><a href="https://github.com/laixiangshun"><i class="icon-github-with-circle"></i></a></li>
             <li><a href="mailto:739156890@qq.com"><i class="icon-mail2"></i></a></li>
         </ul>
@@ -186,7 +186,7 @@
         <div class="fh5co-box">
             <h3 class="heading">分类</h3>
             <ul>
-                <li><a href="https://elricyo.github.io">博客</a></li>
+                <li><a href="http://my.csdn.net/">博客</a></li>
                 <li><a href="${path }/uploadPicture.html">上传图片</a></li>
             </ul>
         </div>
