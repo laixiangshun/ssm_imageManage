@@ -54,17 +54,14 @@
 	    	event.preventDefault();
 
 		});
-
 	};
-
-	
 
 	
 
 	// Burger Menu
 	var burgerMenu = function() {
 
-		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
+		$('body').on('mouseover', '.js-fh5co-nav-toggle', function(event){
 
 			var $this = $(this);
 

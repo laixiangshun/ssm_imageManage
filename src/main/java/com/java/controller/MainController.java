@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.java.entity.Picture;
+import com.java.entity.User;
 import com.java.service.PictureService;
 import com.java.utils.HttpsUtil;
 
@@ -40,6 +41,10 @@ public class MainController {
 		if(pictures!=null && pictures.size()>0){
 			model.addAttribute("pictures", pictures);
 		}
+		HttpSession session=request.getSession();
+		User user=(User)session.getAttribute("user");
+		if(user!=null)
+			model.addAttribute("username",user.getUsername());
 		return "index";
 	}
 	
@@ -96,5 +101,25 @@ public class MainController {
 	@RequestMapping(value="/404.html",method=RequestMethod.GET)
 	public String Html404(HttpServletRequest request,HttpServletResponse response,Model model) throws Exception{
 		return "404";
+	}
+	
+	/**
+	 * 返回single页面
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/single.html",method=RequestMethod.GET)
+	public String ToSingleHtml(HttpServletRequest request,HttpServletResponse response,Model model) throws Exception{
+		String src=request.getParameter("src");
+		String alt=request.getParameter("alt");
+		model.addAttribute("src",src);
+		model.addAttribute("alt",alt);
+		HttpSession session=request.getSession();
+		User user=(User)session.getAttribute("user");
+		if(user!=null)
+			model.addAttribute("username",user.getUsername());
+		return "single";
 	}
 }

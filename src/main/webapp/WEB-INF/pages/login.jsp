@@ -11,7 +11,7 @@
 </head>
 <body>
 	 <div class="main">
-		<div class="login-form">
+		<div class="login-form" onkeydown="key_login();">
 			<h1>请先登录</h1>
 			<div class="head">
 				<img src="${path }/images/user.png" alt=""/>
@@ -20,14 +20,14 @@
 				<input name="username" type="text" class="text" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'username';}" >
 				<input name="pwd" type="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 				<div class="submit">
-					<input type="submit" value="LOGIN" id="submit">
+					<input type="submit" value="LOGIN" id="submit" onclick="login();">
 					<div style="text-align: right;"><a href="javascript:;" onclick="sinup();">还没有账号，去注册</a></div>
 				</div>
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-		$("#submit").click(function(){
+		function login(){
 			var username=$("input[name='username']").val();
 			var password=$("input[name='pwd']").val();
 			if(username==null || username==""){
@@ -42,6 +42,7 @@
 				//data=decodeURIComponent(data,true);//防止中午乱码
 			var jsonstring=getjsondata(data);
 			var json=JSON.parse(jsonstring);//将json字符串转换为json对象
+			///var json=(new Function('return ('+jsonstring+')'))();//适合所有浏览器
 				json.pwd=hex_md5(json.pwd);
 			var	json2=JSON.stringify(json);//将json对象转换为json字符串
 				
@@ -67,7 +68,7 @@
 						+textStatus);
 				}
 			});
-		});
+		};
 		//将serialize()格式化的数据转换为json格式
 		function getjsondata(data){
 			data=data.replace(/&/g,"\",\"");
@@ -76,6 +77,14 @@
 			//data("pwd")=hex_md5(data("pwd"));
 			return data;
 		};
+		//按下enter键登录
+		function key_login(){
+			var e=window.event || arguments.callee.caller.arguments[0];
+			var keycode=e.keyCode || e.which;
+			if(keycode==13){
+				login();
+			}
+		}
 		function sinup(){
 			window.location.href="${path}/sinup.html";
 		}

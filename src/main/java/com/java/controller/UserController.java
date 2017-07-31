@@ -107,4 +107,31 @@ public class UserController {
 			logger.error(e.getMessage(), e);
 		}
 	}
+	/**
+	 * 退出登录
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/logout.action",method=RequestMethod.POST)
+	public void LogoutAction(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		viewmodel view=new viewmodel();
+		response.setContentType("text/json;charset=utf-8");
+		try {
+			HttpSession session=request.getSession();
+			session.invalidate();
+			view.setSuccess(true);
+			/*User user=(User)session.getAttribute("user");
+			if(user!=null){
+				view.setSuccess(false);
+				view.setMessage("退出失败");
+			}*/
+		} catch (Exception e) {
+			logger.error("退出出错:"+e.getMessage(), e);
+			view.setSuccess(false);
+			view.setMessage("退出失败");
+		}
+		String json=JSON.toJSONString(view);
+		response.getWriter().write(json);
+	} 
 }

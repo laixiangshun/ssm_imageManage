@@ -70,7 +70,7 @@
         <div class="context">
         	<img id="preview"/>
        		<h2>请你对图片描述一下哦！</h2>
-        	<textarea type="text" id="content" name="content"></textarea>
+        	<textarea type="text" id="content" name="content" maxlength="50"></textarea>
         </div>
         <input type="submit" id="submit"/>
     </form>

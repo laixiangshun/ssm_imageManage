@@ -43,7 +43,7 @@
   
   <body>
     	<div class="main">
-    		<div class="login-form">
+    		<div class="login-form" onkeydown="key_sinup();">
     			<h1>请先注册</h1><br/>
     			<div class="head">
     				<img alt="" src="${path }/images/user.png">
@@ -137,6 +137,12 @@
    					}
    				});
     		});
+    		//enter键提交注册
+    		function key_sinup(){
+    			if(event.keyCode==13){
+    				$("#submit").click();
+    			}
+    		}
     	</script>
   </body>
 </html>
